@@ -452,6 +452,13 @@ li::before {
     color: #667eea;
 }
 
+.tool-logo {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
 .tool-preview span {
     font-weight: 600;
     color: #333;
