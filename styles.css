@@ -453,20 +453,17 @@ li::before {
 }
 
 .tool-logo {
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     object-fit: contain;
-    border-radius: 8px;
 }
 
 .tool-icon {
-    width: 50px;
-    height: 50px;
-    border-radius: 12px;
+    width: 60px;
+    height: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.5rem;
     margin-bottom: 0.5rem;
 }
 
@@ -521,8 +518,6 @@ li::before {
 .tool-icon {
     width: 80px;
     height: 80px;
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    border-radius: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
