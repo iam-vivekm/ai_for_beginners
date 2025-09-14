@@ -241,19 +241,118 @@
             background-clip: text;
             font-weight: bold;
         }
+
+        .ai-icon {
+            width: 80px;
+            height: 80px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            margin: 20px auto;
+            border-radius: 50%;
+            background-color: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5em;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+
+        .china-flag {
+            background: linear-gradient(45deg, #ff0000, #ff6b6b);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .china-flag::before {
+            content: '🇨🇳';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1.5em;
+        }
+
+        .futuristic-card {
+            background: linear-gradient(135deg, rgba(0,255,255,0.1), rgba(255,0,255,0.1));
+            border: 1px solid rgba(0,255,255,0.3);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 15px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0,255,255,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .futuristic-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            animation: scan 3s infinite;
+        }
+
+        @keyframes scan {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .ai-brain {
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" fill="%23667eea" opacity="0.3"/><path d="M30 40 Q50 20 70 40 Q60 60 50 50 Q40 60 30 40" fill="%23667eea"/><circle cx="40" cy="35" r="3" fill="%23fff"/><circle cx="60" cy="35" r="3" fill="%23fff"/><path d="M35 50 Q50 45 65 50" stroke="%23fff" stroke-width="2" fill="none"/></svg>');
+        }
+
+        .ai-robot {
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect x="30" y="20" width="40" height="50" rx="5" fill="%23667eea"/><circle cx="40" cy="35" r="5" fill="%23fff"/><circle cx="60" cy="35" r="5" fill="%23fff"/><rect x="35" y="45" width="30" height="3" fill="%23fff"/><rect x="20" y="40" width="10" height="20" rx="5" fill="%23667eea"/><rect x="70" y="40" width="10" height="20" rx="5" fill="%23667eea"/><rect x="40" y="70" width="20" height="10" rx="5" fill="%23667eea"/></svg>');
+        }
+
+        .ai-chip {
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect x="20" y="20" width="60" height="60" rx="5" fill="%23667eea"/><rect x="25" y="25" width="50" height="50" fill="%23fff"/><rect x="30" y="30" width="40" height="40" fill="%23667eea"/><rect x="35" y="35" width="30" height="30" fill="%23fff"/><circle cx="45" cy="45" r="3" fill="%23667eea"/><circle cx="55" cy="45" r="3" fill="%23667eea"/><circle cx="45" cy="55" r="3" fill="%23667eea"/><circle cx="55" cy="55" r="3" fill="%23667eea"/></svg>');
+        }
+
+        .ai-network {
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="8" fill="%23667eea"/><circle cx="80" cy="20" r="8" fill="%23667eea"/><circle cx="50" cy="50" r="10" fill="%23667eea"/><circle cx="20" cy="80" r="8" fill="%23667eea"/><circle cx="80" cy="80" r="8" fill="%23667eea"/><line x1="20" y1="20" x2="50" y2="50" stroke="%23667eea" stroke-width="2"/><line x1="80" y1="20" x2="50" y2="50" stroke="%23667eea" stroke-width="2"/><line x1="20" y1="80" x2="50" y2="50" stroke="%23667eea" stroke-width="2"/><line x1="80" y1="80" x2="50" y2="50" stroke="%23667eea" stroke-width="2"/></svg>');
+        }
+
+        .ai-eye {
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><ellipse cx="50" cy="50" rx="35" ry="20" fill="%23667eea" opacity="0.3"/><ellipse cx="50" cy="50" rx="25" ry="15" fill="%23667eea"/><circle cx="50" cy="50" r="8" fill="%23fff"/><circle cx="50" cy="50" r="4" fill="%23667eea"/></svg>');
+        }
+
+        .ai-hand {
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M30 60 Q20 50 30 40 Q40 30 50 40 Q60 30 70 40 Q80 50 70 60 L50 80 Z" fill="%23667eea"/><circle cx="35" cy="45" r="3" fill="%23fff"/><circle cx="45" cy="40" r="3" fill="%23fff"/><circle cx="55" cy="40" r="3" fill="%23fff"/><circle cx="65" cy="45" r="3" fill="%23fff"/></svg>');
+        }
+
+        .ai-rocket {
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50 10 L40 30 L60 30 Z" fill="%23667eea"/><rect x="45" y="30" width="10" height="40" fill="%23667eea"/><rect x="40" y="70" width="20" height="5" fill="%23667eea"/><circle cx="50" cy="50" r="3" fill="%23fff"/></svg>');
+        }
+
+        .ai-star {
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50 10 L60 35 L85 35 L67 52 L75 77 L50 62 L25 77 L33 52 L15 35 L40 35 Z" fill="%23667eea"/></svg>');
+        }
+
+        .ai-gear {
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="25" fill="%23667eea"/><circle cx="50" cy="50" r="15" fill="%23fff"/><rect x="45" y="10" width="10" height="15" fill="%23667eea"/><rect x="45" y="75" width="10" height="15" fill="%23667eea"/><rect x="10" y="45" width="15" height="10" fill="%23667eea"/><rect x="75" y="45" width="15" height="10" fill="%23667eea"/></svg>');
+        }
+
+        .ai-target {
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="%23667eea" stroke-width="3"/><circle cx="50" cy="50" r="30" fill="none" stroke="%23667eea" stroke-width="3"/><circle cx="50" cy="50" r="20" fill="none" stroke="%23667eea" stroke-width="3"/><circle cx="50" cy="50" r="10" fill="%23667eea"/></svg>');
+        }
     </style>
 </head>
 <body>
     <div class="presentation-container">
         <div class="slide-counter">
-            <span id="slideNumber">1</span> / <span id="totalSlides">10</span>
+            <span id="slideNumber">1</span> / <span id="totalSlides">11</span>
         </div>
 
         <!-- Slide 1: Introduction -->
         <div class="slide active intro-slide">
-            <div class="emoji">🚀</div>
+            <div class="ai-icon ai-rocket"></div>
             <h1 class="gradient-text pulse">Welcome to the Future!</h1>
-            <h2 class="sparkle">🤖 Artificial Intelligence for Students</h2>
+            <h2 class="sparkle">Artificial Intelligence for Students</h2>
             
             <div style="text-align: left; max-width: 800px; margin: 20px auto; background: rgba(255,255,255,0.15); padding: 25px; border-radius: 20px; backdrop-filter: blur(10px);">
                 <p style="font-size: 1.4em; margin-bottom: 20px; text-align: center;"><strong>🎯 Did you know?</strong></p>
@@ -284,7 +383,7 @@
 
         <!-- Slide 2: What is AI? -->
         <div class="slide">
-            <div class="emoji">🧠</div>
+            <div class="ai-icon ai-brain"></div>
             <h2>What is Artificial Intelligence?</h2>
             <p><strong>AI is like giving computers a brain!</strong></p>
             <p>It's technology that helps computers:</p>
@@ -300,7 +399,7 @@
 
         <!-- Slide 3: AI in Daily Life -->
         <div class="slide">
-            <div class="emoji">🌟</div>
+            <div class="ai-icon ai-network"></div>
             <h2>AI is EVERYWHERE in Your Life!</h2>
             <p style="font-size: 1.3em; margin-bottom: 25px;">You use AI dozens of times every day - here's how!</p>
             
@@ -347,7 +446,7 @@
 
         <!-- Slide 4: AI for Studies -->
         <div class="slide">
-            <div class="emoji">📚</div>
+            <div class="ai-icon ai-hand"></div>
             <h2>How AI Can Help with Your Studies</h2>
             
             <div class="study-helper">
@@ -373,7 +472,7 @@
 
         <!-- Slide 5: AI Tools for Students -->
         <div class="slide">
-            <div class="emoji">🛠️</div>
+            <div class="ai-icon ai-gear"></div>
             <h2>Cool AI Tools You Can Use Right Now!</h2>
             <p style="font-size: 1.3em; margin-bottom: 25px;">These AI tools can supercharge your learning and creativity!</p>
             
@@ -442,9 +541,80 @@
             <p style="margin-top: 25px; font-size: 1.2em; color: #4a5568;"><strong>🚀 Pro Tip:</strong> Start with one tool and master it before trying others!</p>
         </div>
 
-        <!-- Slide 6: Types of AI -->
+        <!-- Slide 6: China's AI Education Revolution -->
+        <div class="slide china-flag">
+            <div class="ai-icon ai-chip"></div>
+            <h2 style="color: white; margin-bottom: 25px;">🇨🇳 China's AI Education Revolution</h2>
+            <p style="font-size: 1.3em; margin-bottom: 25px; color: white;">China is leading the world in AI-powered education innovation!</p>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 1000px; margin: 0 auto;">
+                <div class="futuristic-card" style="background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.1)); color: white;">
+                    <h3>🎓 Smart Classrooms</h3>
+                    <p><strong>AI-Powered Learning:</strong></p>
+                    <p>• Facial recognition tracks student attention</p>
+                    <p>• AI adjusts teaching pace based on understanding</p>
+                    <p>• Real-time homework correction</p>
+                    <p>• Personalized learning paths for each student</p>
+                    <p style="margin-top: 10px; font-size: 0.9em;"><em>💡 Over 100,000 smart classrooms across China!</em></p>
+                </div>
+                
+                <div class="futuristic-card" style="background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.1)); color: white;">
+                    <h3>📱 AI Tutoring Apps</h3>
+                    <p><strong>Popular Chinese AI Tools:</strong></p>
+                    <p>• <strong>猿辅导 (Yuanfudao):</strong> 1-on-1 AI tutoring</p>
+                    <p>• <strong>作业帮 (Zuoyebang):</strong> Homework AI assistant</p>
+                    <p>• <strong>小猿搜题 (Xiaoyuan Souti):</strong> Photo-based problem solving</p>
+                    <p>• <strong>网易有道 (Youdao):</strong> AI language learning</p>
+                    <p style="margin-top: 10px; font-size: 0.9em;"><em>💡 Used by 200+ million students!</em></p>
+                </div>
+                
+                <div class="futuristic-card" style="background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.1)); color: white;">
+                    <h3>🤖 AI Teaching Assistants</h3>
+                    <p><strong>Revolutionary Features:</strong></p>
+                    <p>• AI teachers that never get tired</p>
+                    <p>• 24/7 availability for questions</p>
+                    <p>• Emotional AI that detects student stress</p>
+                    <p>• Multi-language support for all subjects</p>
+                    <p style="margin-top: 10px; font-size: 0.9em;"><em>💡 AI can teach 1 million students simultaneously!</em></p>
+                </div>
+                
+                <div class="futuristic-card" style="background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.1)); color: white;">
+                    <h3>📊 Big Data Learning</h3>
+                    <p><strong>Data-Driven Education:</strong></p>
+                    <p>• AI analyzes every student's learning pattern</p>
+                    <p>• Predicts which topics need more practice</p>
+                    <p>• Creates custom study schedules</p>
+                    <p>• Tracks progress across all subjects</p>
+                    <p style="margin-top: 10px; font-size: 0.9em;"><em>💡 95% accuracy in predicting test scores!</em></p>
+                </div>
+                
+                <div class="futuristic-card" style="background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.1)); color: white;">
+                    <h3>🎯 Personalized Learning</h3>
+                    <p><strong>AI Customization:</strong></p>
+                    <p>• Each student gets unique curriculum</p>
+                    <p>• AI adapts difficulty in real-time</p>
+                    <p>• Identifies learning strengths and weaknesses</p>
+                    <p>• Suggests optimal study times</p>
+                    <p style="margin-top: 10px; font-size: 0.9em;"><em>💡 Students learn 3x faster with AI!</em></p>
+                </div>
+                
+                <div class="futuristic-card" style="background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.1)); color: white;">
+                    <h3>🌐 Global Impact</h3>
+                    <p><strong>Worldwide Influence:</strong></p>
+                    <p>• Chinese AI education models copied globally</p>
+                    <p>• AI tutoring available in 20+ languages</p>
+                    <p>• Technology shared with developing countries</p>
+                    <p>• Setting new standards for digital learning</p>
+                    <p style="margin-top: 10px; font-size: 0.9em;"><em>💡 China leads in AI education investment!</em></p>
+                </div>
+            </div>
+            
+            <p style="margin-top: 25px; font-size: 1.2em; color: white;"><strong>🚀 Fun Fact:</strong> Chinese students using AI tutors score 15% higher on average!</p>
+        </div>
+
+        <!-- Slide 7: Types of AI -->
         <div class="slide">
-            <div class="emoji">🎯</div>
+            <div class="ai-icon ai-target"></div>
             <h2>Types of AI You Should Know</h2>
             
             <div class="use-case">
@@ -470,7 +640,7 @@
 
         <!-- Slide 6: Cool AI Examples -->
         <div class="slide">
-            <div class="emoji">✨</div>
+            <div class="ai-icon ai-star"></div>
             <h2>Amazing Things AI Can Do</h2>
             <div style="text-align: left; max-width: 700px; margin: 0 auto;">
                 <p><strong>🎨 Create Art:</strong> AI can draw pictures, make music, and even write stories!</p>
@@ -484,7 +654,7 @@
 
         <!-- Slide 7: How to Use AI Responsibly -->
         <div class="slide">
-            <div class="emoji">⚖️</div>
+            <div class="ai-icon ai-eye"></div>
             <h2>Using AI Responsibly</h2>
             <p>AI is powerful, so we need to use it wisely!</p>
             <div style="text-align: left; max-width: 600px; margin: 0 auto;">
@@ -504,7 +674,7 @@
 
         <!-- Slide 9: Interactive Quiz -->
         <div class="slide">
-            <div class="emoji">🎯</div>
+            <div class="ai-icon ai-target"></div>
             <h2>Test Your AI Knowledge!</h2>
             <p style="font-size: 1.3em; margin-bottom: 25px;">Let's see how much you've learned about AI!</p>
             
@@ -577,7 +747,7 @@
 
         <!-- Slide 10: Call to Action -->
         <div class="slide">
-            <div class="emoji bounce">🌟</div>
+            <div class="ai-icon ai-star bounce"></div>
             <h1 class="gradient-text">You're Ready to Explore AI!</h1>
             
             <div style="max-width: 800px; margin: 0 auto; text-align: center;">
@@ -625,7 +795,7 @@
 
     <script>
         let currentSlide = 1;
-        const totalSlides = 10;
+        const totalSlides = 11;
         
         function showSlide(n) {
             const slides = document.getElementsByClassName('slide');
