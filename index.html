@@ -186,31 +186,100 @@
             background: #fed7d7;
             border-color: #e53e3e;
         }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .bounce {
+            animation: bounce 1s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .sparkle {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sparkle::before {
+            content: '✨';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            animation: sparkle 3s infinite;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: scale(0); }
+            50% { opacity: 1; transform: scale(1); }
+        }
+
+        .gradient-text {
+            background: linear-gradient(45deg, #667eea, #764ba2, #f093fb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
     <div class="presentation-container">
         <div class="slide-counter">
-            <span id="slideNumber">1</span> / <span id="totalSlides">8</span>
+            <span id="slideNumber">1</span> / <span id="totalSlides">10</span>
         </div>
 
         <!-- Slide 1: Introduction -->
         <div class="slide active intro-slide">
-            <div class="emoji">🤖</div>
-            <h1>What is AI?</h1>
-            <h3>Artificial Intelligence for Beginners</h3>
+            <div class="emoji">🚀</div>
+            <h1 class="gradient-text pulse">Welcome to the Future!</h1>
+            <h2 class="sparkle">🤖 Artificial Intelligence for Students</h2>
             
-            <div style="text-align: left; max-width: 700px; margin: 20px auto; background: rgba(255,255,255,0.1); padding: 20px; border-radius: 15px;">
-                <p style="font-size: 1.3em; margin-bottom: 15px;"><strong>AI (Artificial Intelligence)</strong> is technology that enables computers and machines to perform tasks that typically require human intelligence.</p>
+            <div style="text-align: left; max-width: 800px; margin: 20px auto; background: rgba(255,255,255,0.15); padding: 25px; border-radius: 20px; backdrop-filter: blur(10px);">
+                <p style="font-size: 1.4em; margin-bottom: 20px; text-align: center;"><strong>🎯 Did you know?</strong></p>
+                <p style="font-size: 1.2em; margin-bottom: 15px;">AI is already part of your daily life - from TikTok's algorithm to your phone's camera!</p>
                 
-                <p style="margin-bottom: 10px;"><strong>🧠 Think:</strong> AI can analyze data, recognize patterns, and make decisions</p>
-                <p style="margin-bottom: 10px;"><strong>📚 Learn:</strong> AI improves by processing more information and examples</p>
-                <p style="margin-bottom: 10px;"><strong>👁️ See:</strong> AI can recognize images, faces, and objects in photos</p>
-                <p style="margin-bottom: 10px;"><strong>🗣️ Understand:</strong> AI can process and respond to human language</p>
-                <p style="margin-bottom: 15px;"><strong>🎯 Predict:</strong> AI can forecast outcomes based on past data</p>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 20px 0;">
+                    <div style="background: rgba(255,255,255,0.2); padding: 15px; border-radius: 10px;">
+                        <p style="margin-bottom: 8px;"><strong>🧠 Think Like a Human</strong></p>
+                        <p style="font-size: 0.9em;">Analyze, reason, and make decisions</p>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.2); padding: 15px; border-radius: 10px;">
+                        <p style="margin-bottom: 8px;"><strong>📚 Learn Forever</strong></p>
+                        <p style="font-size: 0.9em;">Gets smarter with every interaction</p>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.2); padding: 15px; border-radius: 10px;">
+                        <p style="margin-bottom: 8px;"><strong>👁️ See Everything</strong></p>
+                        <p style="font-size: 0.9em;">Recognize faces, objects, and patterns</p>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.2); padding: 15px; border-radius: 10px;">
+                        <p style="margin-bottom: 8px;"><strong>🗣️ Talk Naturally</strong></p>
+                        <p style="font-size: 0.9em;">Understand and respond in human language</p>
+                    </div>
+                </div>
+                
+                <p style="text-align: center; font-size: 1.3em; margin-top: 20px;"><strong>🌟 Ready to discover how AI can supercharge your learning?</strong></p>
             </div>
-            
-            <p style="font-size: 1.2em; margin-top: 20px;"><em>Let's explore how this amazing technology works and how it can help you in your daily life and studies!</em></p>
         </div>
 
         <!-- Slide 2: What is AI? -->
@@ -231,29 +300,49 @@
 
         <!-- Slide 3: AI in Daily Life -->
         <div class="slide">
-            <div class="emoji">📱</div>
-            <h2>AI in Your Daily Life</h2>
-            <p>You probably use AI every day without knowing it!</p>
+            <div class="emoji">🌟</div>
+            <h2>AI is EVERYWHERE in Your Life!</h2>
+            <p style="font-size: 1.3em; margin-bottom: 25px;">You use AI dozens of times every day - here's how!</p>
             
-            <div class="daily-example">
-                <h3>🎵 Spotify/YouTube</h3>
-                <p>Recommends songs you might like based on what you've listened to before</p>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; max-width: 900px; margin: 0 auto;">
+                <div class="daily-example" style="background: linear-gradient(45deg, #ff6b6b 0%, #ffa500 100%);">
+                    <h3>🎵 TikTok & Instagram</h3>
+                    <p><strong>AI Magic:</strong> Learns what videos you like and shows you more!</p>
+                    <p style="font-size: 0.9em; margin-top: 8px;">💡 <em>Every scroll teaches AI about your preferences</em></p>
+                </div>
+                
+                <div class="daily-example" style="background: linear-gradient(45deg, #4ecdc4 0%, #44a08d 100%);">
+                    <h3>📸 Snapchat Filters</h3>
+                    <p><strong>AI Magic:</strong> Recognizes your face and adds cool effects!</p>
+                    <p style="font-size: 0.9em; margin-top: 8px;">💡 <em>Computer vision at work!</em></p>
+                </div>
+                
+                <div class="daily-example" style="background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);">
+                    <h3>🗺️ Google Maps</h3>
+                    <p><strong>AI Magic:</strong> Predicts traffic and finds the fastest route!</p>
+                    <p style="font-size: 0.9em; margin-top: 8px;">💡 <em>Uses real-time data from millions of phones</em></p>
+                </div>
+                
+                <div class="daily-example" style="background: linear-gradient(45deg, #f093fb 0%, #f5576c 100%);">
+                    <h3>🛒 Amazon & Shopping</h3>
+                    <p><strong>AI Magic:</strong> Knows what you want before you do!</p>
+                    <p style="font-size: 0.9em; margin-top: 8px;">💡 <em>Analyzes your browsing and buying patterns</em></p>
+                </div>
+                
+                <div class="daily-example" style="background: linear-gradient(45deg, #ffecd2 0%, #fcb69f 100%); color: #333;">
+                    <h3>🎮 Gaming</h3>
+                    <p><strong>AI Magic:</strong> Creates smart opponents and dynamic worlds!</p>
+                    <p style="font-size: 0.9em; margin-top: 8px;">💡 <em>NPCs that learn and adapt to your play style</em></p>
+                </div>
+                
+                <div class="daily-example" style="background: linear-gradient(45deg, #a8edea 0%, #fed6e3 100%); color: #333;">
+                    <h3>📱 Siri & Alexa</h3>
+                    <p><strong>AI Magic:</strong> Understands your voice and responds naturally!</p>
+                    <p style="font-size: 0.9em; margin-top: 8px;">💡 <em>Natural language processing in action</em></p>
+                </div>
             </div>
             
-            <div class="daily-example">
-                <h3>📸 Phone Camera</h3>
-                <p>Automatically focuses on faces and makes photos look better</p>
-            </div>
-            
-            <div class="daily-example">
-                <h3>🗺️ Google Maps</h3>
-                <p>Finds the fastest route and avoids traffic jams</p>
-            </div>
-            
-            <div class="daily-example">
-                <h3>🛒 Online Shopping</h3>
-                <p>Shows you products you might want to buy</p>
-            </div>
+            <p style="margin-top: 20px; font-size: 1.1em; color: #4a5568;"><strong>🤯 Fun Fact:</strong> The average teenager interacts with AI over 100 times per day!</p>
         </div>
 
         <!-- Slide 4: AI for Studies -->
@@ -282,7 +371,78 @@
             </div>
         </div>
 
-        <!-- Slide 5: Types of AI -->
+        <!-- Slide 5: AI Tools for Students -->
+        <div class="slide">
+            <div class="emoji">🛠️</div>
+            <h2>Cool AI Tools You Can Use Right Now!</h2>
+            <p style="font-size: 1.3em; margin-bottom: 25px;">These AI tools can supercharge your learning and creativity!</p>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 1000px; margin: 0 auto;">
+                <div style="background: linear-gradient(45deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; border-radius: 15px; text-align: left;">
+                    <h3>🤖 ChatGPT & Claude</h3>
+                    <p><strong>What it does:</strong> Your personal AI tutor!</p>
+                    <p>• Help with homework questions</p>
+                    <p>• Explain complex topics simply</p>
+                    <p>• Brainstorm ideas for projects</p>
+                    <p>• Practice conversations in other languages</p>
+                    <p style="margin-top: 10px; font-size: 0.9em;"><em>💡 Try: "Explain photosynthesis like I'm 12"</em></p>
+                </div>
+                
+                <div style="background: linear-gradient(45deg, #f093fb 0%, #f5576c 100%); color: white; padding: 20px; border-radius: 15px; text-align: left;">
+                    <h3>🎨 Canva AI & DALL-E</h3>
+                    <p><strong>What it does:</strong> Create amazing visuals!</p>
+                    <p>• Generate images for presentations</p>
+                    <p>• Design posters and infographics</p>
+                    <p>• Create logos and graphics</p>
+                    <p>• Make your projects look professional</p>
+                    <p style="margin-top: 10px; font-size: 0.9em;"><em>💡 Try: "A futuristic robot studying"</em></p>
+                </div>
+                
+                <div style="background: linear-gradient(45deg, #4facfe 0%, #00f2fe 100%); color: white; padding: 20px; border-radius: 15px; text-align: left;">
+                    <h3>📝 Grammarly & QuillBot</h3>
+                    <p><strong>What it does:</strong> Perfect your writing!</p>
+                    <p>• Fix grammar and spelling errors</p>
+                    <p>• Improve sentence structure</p>
+                    <p>• Paraphrase and rephrase text</p>
+                    <p>• Check for plagiarism</p>
+                    <p style="margin-top: 10px; font-size: 0.9em;"><em>💡 Try: Paste your essay for instant improvements</em></p>
+                </div>
+                
+                <div style="background: linear-gradient(45deg, #43e97b 0%, #38f9d7 100%); color: white; padding: 20px; border-radius: 15px; text-align: left;">
+                    <h3>🧮 Photomath & Wolfram Alpha</h3>
+                    <p><strong>What it does:</strong> Solve math problems step-by-step!</p>
+                    <p>• Take photos of math problems</p>
+                    <p>• Get detailed solutions</p>
+                    <p>• Learn the process, not just answers</p>
+                    <p>• Practice with similar problems</p>
+                    <p style="margin-top: 10px; font-size: 0.9em;"><em>💡 Try: Scan your algebra homework</em></p>
+                </div>
+                
+                <div style="background: linear-gradient(45deg, #ff9a9e 0%, #fecfef 100%); color: #333; padding: 20px; border-radius: 15px; text-align: left;">
+                    <h3>🎵 Suno & Udio</h3>
+                    <p><strong>What it does:</strong> Create music and songs!</p>
+                    <p>• Generate original music</p>
+                    <p>• Create songs with lyrics</p>
+                    <p>• Make background music for videos</p>
+                    <p>• Experiment with different genres</p>
+                    <p style="margin-top: 10px; font-size: 0.9em;"><em>💡 Try: "A happy song about learning"</em></p>
+                </div>
+                
+                <div style="background: linear-gradient(45deg, #a8edea 0%, #fed6e3 100%); color: #333; padding: 20px; border-radius: 15px; text-align: left;">
+                    <h3>📚 Khan Academy AI & Duolingo</h3>
+                    <p><strong>What it does:</strong> Personalized learning!</p>
+                    <p>• Custom study plans</p>
+                    <p>• Adaptive practice problems</p>
+                    <p>• Learn at your own pace</p>
+                    <p>• Track your progress</p>
+                    <p style="margin-top: 10px; font-size: 0.9em;"><em>💡 Try: Set your learning goals</em></p>
+                </div>
+            </div>
+            
+            <p style="margin-top: 25px; font-size: 1.2em; color: #4a5568;"><strong>🚀 Pro Tip:</strong> Start with one tool and master it before trying others!</p>
+        </div>
+
+        <!-- Slide 6: Types of AI -->
         <div class="slide">
             <div class="emoji">🎯</div>
             <h2>Types of AI You Should Know</h2>
@@ -342,26 +502,119 @@
             </div>
         </div>
 
-        <!-- Slide 8: Quiz -->
+        <!-- Slide 9: Interactive Quiz -->
         <div class="slide">
             <div class="emoji">🎯</div>
-            <h2>Quick Quiz!</h2>
-            <p><strong>Which of these is an example of AI in daily life?</strong></p>
+            <h2>Test Your AI Knowledge!</h2>
+            <p style="font-size: 1.3em; margin-bottom: 25px;">Let's see how much you've learned about AI!</p>
             
-            <div class="quiz-option" onclick="selectAnswer(this, false)">
-                A) A regular calculator
+            <div id="quiz-container">
+                <div id="question-1">
+                    <h3 style="color: #667eea; margin-bottom: 20px;">Question 1: Which of these uses AI?</h3>
+                    
+                    <div class="quiz-option" onclick="selectAnswer(this, false, 'question-1')">
+                        A) A regular calculator
+                    </div>
+                    <div class="quiz-option" onclick="selectAnswer(this, false, 'question-1')">
+                        B) A printed book
+                    </div>
+                    <div class="quiz-option" onclick="selectAnswer(this, true, 'question-1')">
+                        C) TikTok's recommendation algorithm
+                    </div>
+                    <div class="quiz-option" onclick="selectAnswer(this, false, 'question-1')">
+                        D) A pencil
+                    </div>
+                    
+                    <div id="quiz-result-1" style="margin-top: 20px; font-weight: bold; font-size: 1.2em;"></div>
+                </div>
+                
+                <div id="question-2" style="display: none;">
+                    <h3 style="color: #667eea; margin-bottom: 20px;">Question 2: What does AI stand for?</h3>
+                    
+                    <div class="quiz-option" onclick="selectAnswer(this, false, 'question-2')">
+                        A) Advanced Internet
+                    </div>
+                    <div class="quiz-option" onclick="selectAnswer(this, true, 'question-2')">
+                        B) Artificial Intelligence
+                    </div>
+                    <div class="quiz-option" onclick="selectAnswer(this, false, 'question-2')">
+                        C) Automated Information
+                    </div>
+                    <div class="quiz-option" onclick="selectAnswer(this, false, 'question-2')">
+                        D) Amazing Innovation
+                    </div>
+                    
+                    <div id="quiz-result-2" style="margin-top: 20px; font-weight: bold; font-size: 1.2em;"></div>
+                </div>
+                
+                <div id="question-3" style="display: none;">
+                    <h3 style="color: #667eea; margin-bottom: 20px;">Question 3: Which AI tool can help with writing?</h3>
+                    
+                    <div class="quiz-option" onclick="selectAnswer(this, false, 'question-3')">
+                        A) A dictionary
+                    </div>
+                    <div class="quiz-option" onclick="selectAnswer(this, true, 'question-3')">
+                        B) Grammarly
+                    </div>
+                    <div class="quiz-option" onclick="selectAnswer(this, false, 'question-3')">
+                        C) A ruler
+                    </div>
+                    <div class="quiz-option" onclick="selectAnswer(this, false, 'question-3')">
+                        D) A calculator
+                    </div>
+                    
+                    <div id="quiz-result-3" style="margin-top: 20px; font-weight: bold; font-size: 1.2em;"></div>
+                </div>
+                
+                <div id="quiz-complete" style="display: none; text-align: center;">
+                    <div class="emoji" style="font-size: 4em; margin: 20px;">🎉</div>
+                    <h2 style="color: #38a169;">Quiz Complete!</h2>
+                    <p style="font-size: 1.3em; margin: 20px 0;">You're now an AI expert! 🚀</p>
+                    <p style="font-size: 1.1em; color: #4a5568;">Keep exploring AI tools and remember to use them responsibly!</p>
+                </div>
             </div>
-            <div class="quiz-option" onclick="selectAnswer(this, false)">
-                B) A printed book
-            </div>
-            <div class="quiz-option" onclick="selectAnswer(this, true)">
-                C) Netflix recommending movies you might like
-            </div>
-            <div class="quiz-option" onclick="selectAnswer(this, false)">
-                D) A pencil
-            </div>
+        </div>
+
+        <!-- Slide 10: Call to Action -->
+        <div class="slide">
+            <div class="emoji bounce">🌟</div>
+            <h1 class="gradient-text">You're Ready to Explore AI!</h1>
             
-            <div id="quiz-result" style="margin-top: 20px; font-weight: bold; font-size: 1.3em;"></div>
+            <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+                <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 20px; margin: 20px 0;">
+                    <h2 style="margin-bottom: 20px;">🚀 Your AI Journey Starts Now!</h2>
+                    <p style="font-size: 1.3em; margin-bottom: 25px;">You now understand how AI works and how it can help you learn, create, and succeed!</p>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 25px 0;">
+                        <div style="background: rgba(255,255,255,0.2); padding: 20px; border-radius: 15px;">
+                            <h3>🎯 Next Steps</h3>
+                            <p>• Try one AI tool today</p>
+                            <p>• Ask ChatGPT a question</p>
+                            <p>• Create something with AI</p>
+                            <p>• Share what you learn!</p>
+                        </div>
+                        
+                        <div style="background: rgba(255,255,255,0.2); padding: 20px; border-radius: 15px;">
+                            <h3>💡 Remember</h3>
+                            <p>• Use AI responsibly</p>
+                            <p>• Always think critically</p>
+                            <p>• Keep learning and growing</p>
+                            <p>• The future is yours!</p>
+                        </div>
+                    </div>
+                    
+                    <p style="font-size: 1.4em; margin-top: 25px; font-weight: bold;">
+                        🌟 You're not just using AI - you're part of the AI revolution! 🌟
+                    </p>
+                </div>
+                
+                <div style="margin-top: 30px;">
+                    <p style="font-size: 1.2em; color: #4a5568;">
+                        <strong>Thank you for exploring AI with us!</strong><br>
+                        Keep curious, keep learning, and keep creating amazing things! 🚀
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -372,7 +625,7 @@
 
     <script>
         let currentSlide = 1;
-        const totalSlides = 8;
+        const totalSlides = 10;
         
         function showSlide(n) {
             const slides = document.getElementsByClassName('slide');
@@ -399,10 +652,15 @@
             showSlide(currentSlide);
         }
         
-        function selectAnswer(option, isCorrect) {
-            const options = document.getElementsByClassName('quiz-option');
-            const result = document.getElementById('quiz-result');
+        let currentQuestion = 1;
+        let correctAnswers = 0;
+        
+        function selectAnswer(option, isCorrect, questionId) {
+            const questionDiv = document.getElementById(questionId);
+            const options = questionDiv.getElementsByClassName('quiz-option');
+            const result = document.getElementById('quiz-result-' + questionId.split('-')[1]);
             
+            // Disable all options in this question
             for (let opt of options) {
                 opt.style.pointerEvents = 'none';
                 if (opt === option) {
@@ -413,12 +671,26 @@
             }
             
             if (isCorrect) {
-                result.textContent = '🎉 Correct! Netflix uses AI to analyze your viewing history and recommend content you might enjoy!';
+                correctAnswers++;
+                result.textContent = '🎉 Correct! Great job!';
                 result.style.color = '#38a169';
             } else {
-                result.textContent = '❌ Not quite right. The correct answer is C - Netflix recommendations use AI!';
+                result.textContent = '❌ Not quite right. Try to remember what we learned!';
                 result.style.color = '#e53e3e';
             }
+            
+            // Move to next question after 2 seconds
+            setTimeout(() => {
+                if (currentQuestion < 3) {
+                    currentQuestion++;
+                    document.getElementById('question-' + (currentQuestion - 1)).style.display = 'none';
+                    document.getElementById('question-' + currentQuestion).style.display = 'block';
+                } else {
+                    // Quiz complete
+                    document.getElementById('question-3').style.display = 'none';
+                    document.getElementById('quiz-complete').style.display = 'block';
+                }
+            }, 2000);
         }
         
         // Keyboard navigation
