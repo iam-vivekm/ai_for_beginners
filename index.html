@@ -37,6 +37,19 @@
             padding: 40px;
             min-height: 500px;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 0%, rgba(102, 126, 234, 0.02) 50%, transparent 100%);
+            pointer-events: none;
         }
 
         .slide.active {
@@ -246,8 +259,8 @@
         }
 
         .ai-icon {
-            width: 80px;
-            height: 80px;
+            width: 120px;
+            height: 120px;
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
@@ -260,20 +273,79 @@
             font-size: 2.5em;
             backdrop-filter: blur(10px);
             border: 2px solid rgba(255,255,255,0.3);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
         }
 
-        .china-flag {
-            background: linear-gradient(45deg, #ff0000, #ff6b6b);
+        .hero-image {
+            width: 100%;
+            max-width: 600px;
+            height: 300px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 20px;
+            margin: 20px auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
             position: relative;
             overflow: hidden;
         }
 
-        .china-flag::before {
-            content: '🇨🇳';
+        .hero-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(102, 126, 234, 0.3), rgba(118, 75, 162, 0.3));
+            border-radius: 20px;
+        }
+
+        .image-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            color: white;
+            padding: 20px;
+            border-radius: 0 0 20px 20px;
+        }
+
+        .slide-image {
+            width: 200px;
+            height: 150px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 15px;
+            margin: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .slide-image:hover {
+            transform: scale(1.05);
+        }
+
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .energetic-slide {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .energetic-slide::before {
+            content: '⚡';
             position: absolute;
             top: 10px;
             right: 10px;
             font-size: 1.5em;
+            animation: sparkle 2s infinite;
         }
 
         .futuristic-card {
@@ -343,6 +415,45 @@
         .ai-target {
             background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="%23667eea" stroke-width="3"/><circle cx="50" cy="50" r="30" fill="none" stroke="%23667eea" stroke-width="3"/><circle cx="50" cy="50" r="20" fill="none" stroke="%23667eea" stroke-width="3"/><circle cx="50" cy="50" r="10" fill="%23667eea"/></svg>');
         }
+
+        .energetic-pulse {
+            animation: energeticPulse 2s infinite;
+        }
+
+        @keyframes energeticPulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(102, 126, 234, 0.7); }
+            50% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(102, 126, 234, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(102, 126, 234, 0); }
+        }
+
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .glow {
+            box-shadow: 0 0 20px rgba(102, 126, 234, 0.5);
+        }
+
+        .slide-title {
+            background: linear-gradient(45deg, #667eea, #764ba2, #f093fb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: bold;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            animation: titleGlow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes titleGlow {
+            from { filter: drop-shadow(0 0 5px rgba(102, 126, 234, 0.5)); }
+            to { filter: drop-shadow(0 0 20px rgba(118, 75, 162, 0.8)); }
+        }
     </style>
 </head>
 <body>
@@ -354,8 +465,15 @@
         <!-- Slide 1: Introduction -->
         <div class="slide active intro-slide">
             <div class="ai-icon ai-rocket"></div>
-            <h1 class="gradient-text pulse">Welcome to the Future!</h1>
-            <h2 class="sparkle">Artificial Intelligence in Education</h2>
+            <h1 class="slide-title energetic-pulse">Welcome to the Future!</h1>
+            <h2 class="sparkle floating">Artificial Intelligence in Education</h2>
+            
+            <div class="hero-image" style="background-image: url('https://images.unsplash.com/photo-1485827404703-89b55fcc595e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');">
+                <div class="image-overlay">
+                    <h3>🚀 The Future of Learning is Here!</h3>
+                    <p>AI is transforming education with personalized, intelligent learning experiences</p>
+                </div>
+            </div>
             
             <div style="text-align: left; max-width: 800px; margin: 20px auto; background: rgba(255,255,255,0.15); padding: 25px; border-radius: 20px; backdrop-filter: blur(10px);">
                 <p style="font-size: 1.4em; margin-bottom: 20px; text-align: center;"><strong>🎯 Did you know?</strong></p>
@@ -390,6 +508,14 @@
             <div class="ai-icon ai-brain"></div>
             <h2>What is Artificial Intelligence?</h2>
             <p><strong>AI is like giving computers a brain!</strong></p>
+            
+            <div class="hero-image" style="background-image: url('https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');">
+                <div class="image-overlay">
+                    <h3>🧠 AI: The Digital Brain</h3>
+                    <p>Computers that can think, learn, and make decisions like humans</p>
+                </div>
+            </div>
+            
             <p>It's technology that helps computers:</p>
             <div style="text-align: left; max-width: 600px; margin: 0 auto;">
                 <p>• <strong>Think</strong> and solve problems</p>
@@ -457,6 +583,13 @@
             <div class="ai-icon ai-network"></div>
             <h2>AI is EVERYWHERE in Your Life!</h2>
             <p style="font-size: 1.3em; margin-bottom: 25px;">You use AI dozens of times every day - here's how!</p>
+            
+            <div class="hero-image" style="background-image: url('https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2025&q=80');">
+                <div class="image-overlay">
+                    <h3>📱 AI in Your Pocket</h3>
+                    <p>From social media to navigation, AI powers your daily digital experience</p>
+                </div>
+            </div>
             
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; max-width: 900px; margin: 0 auto;">
                 <div class="daily-example" style="background: linear-gradient(45deg, #ff6b6b 0%, #ffa500 100%);">
@@ -582,6 +715,13 @@
             <h2>Cool AI Tools You Can Use Right Now!</h2>
             <p style="font-size: 1.3em; margin-bottom: 25px;">These AI tools can supercharge your learning and creativity!</p>
             
+            <div class="hero-image" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');">
+                <div class="image-overlay">
+                    <h3>🛠️ AI Tools at Your Fingertips</h3>
+                    <p>Powerful AI applications that can transform your learning experience</p>
+                </div>
+            </div>
+            
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 1000px; margin: 0 auto;">
                 <div style="background: linear-gradient(45deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; border-radius: 15px; text-align: left;">
                     <h3>🤖 ChatGPT & Claude</h3>
@@ -647,31 +787,38 @@
             <p style="margin-top: 25px; font-size: 1.2em; color: #4a5568;"><strong>🚀 Pro Tip:</strong> Start with one tool and master it before trying others!</p>
         </div>
 
-        <!-- Slide 8: China's AI Education Revolution -->
-        <div class="slide china-flag">
+        <!-- Slide 8: Global AI Education Revolution -->
+        <div class="slide" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
             <div class="ai-icon ai-chip"></div>
-            <h2 style="color: white; margin-bottom: 25px;">🇨🇳 China's AI Education Revolution</h2>
-            <p style="font-size: 1.3em; margin-bottom: 25px; color: white;">China is leading the world in AI-powered education innovation!</p>
+            <h2 style="color: white; margin-bottom: 25px;">🌍 Global AI Education Revolution</h2>
+            <p style="font-size: 1.3em; margin-bottom: 25px; color: white;">AI is transforming education worldwide with amazing innovations!</p>
+            
+            <div class="hero-image" style="background-image: url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');">
+                <div class="image-overlay">
+                    <h3>🚀 Smart Classrooms Around the World</h3>
+                    <p>AI-powered learning environments are revolutionizing education globally</p>
+                </div>
+            </div>
             
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 1000px; margin: 0 auto;">
                 <div class="futuristic-card" style="background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.1)); color: white;">
                     <h3>🎓 Smart Classrooms</h3>
                     <p><strong>AI-Powered Learning:</strong></p>
-                    <p>• Facial recognition tracks student attention</p>
+                    <p>• Facial recognition tracks student engagement</p>
                     <p>• AI adjusts teaching pace based on understanding</p>
                     <p>• Real-time homework correction</p>
                     <p>• Personalized learning paths for each student</p>
-                    <p style="margin-top: 10px; font-size: 0.9em;"><em>💡 Over 100,000 smart classrooms across China!</em></p>
+                    <p style="margin-top: 10px; font-size: 0.9em;"><em>💡 Over 1 million smart classrooms worldwide!</em></p>
                 </div>
                 
                 <div class="futuristic-card" style="background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.1)); color: white;">
                     <h3>📱 AI Tutoring Apps</h3>
-                    <p><strong>Popular Chinese AI Tools:</strong></p>
-                    <p>• <strong>猿辅导 (Yuanfudao):</strong> 1-on-1 AI tutoring</p>
-                    <p>• <strong>作业帮 (Zuoyebang):</strong> Homework AI assistant</p>
-                    <p>• <strong>小猿搜题 (Xiaoyuan Souti):</strong> Photo-based problem solving</p>
-                    <p>• <strong>网易有道 (Youdao):</strong> AI language learning</p>
-                    <p style="margin-top: 10px; font-size: 0.9em;"><em>💡 Used by 200+ million students!</em></p>
+                    <p><strong>Popular Global AI Tools:</strong></p>
+                    <p>• <strong>Khan Academy AI:</strong> Personalized learning paths</p>
+                    <p>• <strong>Duolingo:</strong> AI-powered language learning</p>
+                    <p>• <strong>Photomath:</strong> AI math problem solver</p>
+                    <p>• <strong>Coursera AI:</strong> Adaptive course content</p>
+                    <p style="margin-top: 10px; font-size: 0.9em;"><em>💡 Used by 500+ million students globally!</em></p>
                 </div>
                 
                 <div class="futuristic-card" style="background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.1)); color: white;">
@@ -681,7 +828,7 @@
                     <p>• 24/7 availability for questions</p>
                     <p>• Emotional AI that detects student stress</p>
                     <p>• Multi-language support for all subjects</p>
-                    <p style="margin-top: 10px; font-size: 0.9em;"><em>💡 AI can teach 1 million students simultaneously!</em></p>
+                    <p style="margin-top: 10px; font-size: 0.9em;"><em>💡 AI can teach millions of students simultaneously!</em></p>
                 </div>
                 
                 <div class="futuristic-card" style="background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.1)); color: white;">
@@ -707,15 +854,15 @@
                 <div class="futuristic-card" style="background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.1)); color: white;">
                     <h3>🌐 Global Impact</h3>
                     <p><strong>Worldwide Influence:</strong></p>
-                    <p>• Chinese AI education models copied globally</p>
-                    <p>• AI tutoring available in 20+ languages</p>
+                    <p>• AI education models spreading globally</p>
+                    <p>• AI tutoring available in 50+ languages</p>
                     <p>• Technology shared with developing countries</p>
                     <p>• Setting new standards for digital learning</p>
-                    <p style="margin-top: 10px; font-size: 0.9em;"><em>💡 China leads in AI education investment!</em></p>
+                    <p style="margin-top: 10px; font-size: 0.9em;"><em>💡 Global investment in AI education exceeds $10 billion!</em></p>
                 </div>
             </div>
             
-            <p style="margin-top: 25px; font-size: 1.2em; color: white;"><strong>🚀 Fun Fact:</strong> Chinese students using AI tutors score 15% higher on average!</p>
+            <p style="margin-top: 25px; font-size: 1.2em; color: white;"><strong>🚀 Fun Fact:</strong> Students using AI tutors score 15% higher on average worldwide!</p>
         </div>
 
         <!-- Slide 9: Types of AI -->
@@ -748,6 +895,14 @@
         <div class="slide">
             <div class="ai-icon ai-star"></div>
             <h2>Amazing Things AI Can Do</h2>
+            
+            <div class="image-grid">
+                <div class="slide-image" style="background-image: url('https://images.unsplash.com/photo-1541961017774-22349e4a1262?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2058&q=80');"></div>
+                <div class="slide-image" style="background-image: url('https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2031&q=80');"></div>
+                <div class="slide-image" style="background-image: url('https://images.unsplash.com/photo-1446776877081-d282a0f896e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80');"></div>
+                <div class="slide-image" style="background-image: url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');"></div>
+            </div>
+            
             <div style="text-align: left; max-width: 700px; margin: 0 auto;">
                 <p><strong>🎨 Create Art:</strong> AI can draw pictures, make music, and even write stories!</p>
                 <p><strong>🏥 Help Doctors:</strong> AI helps doctors find diseases earlier and suggest treatments</p>
@@ -904,8 +1059,8 @@
 
         <!-- Slide 14: Call to Action -->
         <div class="slide">
-            <div class="ai-icon ai-star bounce"></div>
-            <h1 class="gradient-text">You're Ready to Explore AI!</h1>
+            <div class="ai-icon ai-star bounce energetic-pulse"></div>
+            <h1 class="slide-title glow">You're Ready to Explore AI!</h1>
             
             <div style="max-width: 800px; margin: 0 auto; text-align: center;">
                 <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 20px; margin: 20px 0;">
