@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Placeholder Images</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        canvas {
+            border: 2px solid #ddd;
+            margin: 10px;
+            border-radius: 8px;
+        }
+        .image-container {
+            display: inline-block;
+            margin: 10px;
+            text-align: center;
+        }
+        button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px 5px;
+        }
+        button:hover {
+            background: #5a6fd8;
+        }
+        .download-all {
+            background: #28a745;
+            font-size: 16px;
+            padding: 15px 30px;
+        }
+        .download-all:hover {
+            background: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>AI Presentation Placeholder Images</h1>
+        <p>This tool creates placeholder images for all 15 slides. Click "Generate All" to create them, then right-click each image to save it.</p>
+        
+        <button onclick="generateAllImages()" class="download-all">Generate All Placeholder Images</button>
+        <button onclick="downloadAllImages()" class="download-all">Download All Images</button>
+        
+        <div id="imageContainer"></div>
+    </div>
+
+    <script>
+        const slideData = [
+            { number: 1, name: "AI Brain", description: "Main title image representing AI and human intelligence" },
+            { number: 2, name: "AI Concepts", description: "Visual representation of AI concepts" },
+            { number: 3, name: "Daily Life", description: "AI integration in everyday activities" },
+            { number: 4, name: "Student Learning", description: "AI in educational settings" },
+            { number: 5, name: "Task Solving", description: "AI helping with problem-solving" },
+            { number: 6, name: "AI Trends", description: "Latest AI trends and innovations" },
+            { number: 7, name: "AI Tools", description: "Overview of popular AI tools" },
+            { number: 8, name: "ChatGPT", description: "ChatGPT interface or branding" },
+            { number: 9, name: "DALL-E", description: "DALL-E image generation examples" },
+            { number: 10, name: "GitHub Copilot", description: "GitHub Copilot in action" },
+            { number: 11, name: "Google Bard", description: "Google Bard interface" },
+            { number: 12, name: "Runway ML", description: "Runway ML creative tools" },
+            { number: 13, name: "China Education", description: "AI in Chinese education system" },
+            { number: 14, name: "Knowledge Improvement", description: "Learning and knowledge enhancement" },
+            { number: 15, name: "Future AI", description: "Future vision of AI" }
+        ];
+
+        function createPlaceholderImage(slideNumber, slideName, description) {
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = 400;
+            canvas.height = 300;
+
+            // Create gradient background
+            const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+            const colors = [
+                ['#667eea', '#764ba2'],
+                ['#f093fb', '#f5576c'],
+                ['#4facfe', '#00f2fe'],
+                ['#43e97b', '#38f9d7'],
+                ['#fa709a', '#fee140'],
+                ['#a8edea', '#fed6e3'],
+                ['#ff9a9e', '#fecfef'],
+                ['#ffecd2', '#fcb69f'],
+                ['#a18cd1', '#fbc2eb'],
+                ['#fad0c4', '#ffd1ff'],
+                ['#ff9a9e', '#fad0c4'],
+                ['#a8edea', '#fed6e3'],
+                ['#d299c2', '#fef9d7'],
+                ['#89f7fe', '#66a6ff'],
+                ['#fdbb2d', '#22c1c3']
+            ];
+
+            const colorPair = colors[(slideNumber - 1) % colors.length];
+            gradient.addColorStop(0, colorPair[0]);
+            gradient.addColorStop(1, colorPair[1]);
+            
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Add decorative elements
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.1)';
+            for (let i = 0; i < 20; i++) {
+                const x = Math.random() * canvas.width;
+                const y = Math.random() * canvas.height;
+                const radius = Math.random() * 30 + 10;
+                ctx.beginPath();
+                ctx.arc(x, y, radius, 0, Math.PI * 2);
+                ctx.fill();
+            }
+
+            // Add main text
+            ctx.fillStyle = 'white';
+            ctx.font = 'bold 28px Arial, sans-serif';
+            ctx.textAlign = 'center';
+            ctx.shadowColor = 'rgba(0, 0, 0, 0.3)';
+            ctx.shadowBlur = 5;
+            ctx.fillText(`Slide ${slideNumber}`, canvas.width / 2, canvas.height / 2 - 30);
+            
+            ctx.font = 'bold 20px Arial, sans-serif';
+            ctx.fillText(slideName, canvas.width / 2, canvas.height / 2 + 10);
+            
+            ctx.font = '14px Arial, sans-serif';
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+            ctx.fillText(description, canvas.width / 2, canvas.height / 2 + 40);
+
+            // Add AI icon
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+            ctx.font = '60px Arial, sans-serif';
+            ctx.fillText('🤖', canvas.width / 2, canvas.height / 2 - 80);
+
+            return canvas;
+        }
+
+        function generateAllImages() {
+            const container = document.getElementById('imageContainer');
+            container.innerHTML = '';
+
+            slideData.forEach(slide => {
+                const canvas = createPlaceholderImage(slide.number, slide.name, slide.description);
+                canvas.id = `slide${slide.number}`;
+                
+                const imageContainer = document.createElement('div');
+                imageContainer.className = 'image-container';
+                
+                const label = document.createElement('div');
+                label.innerHTML = `<strong>slide${slide.number}-${slide.name.toLowerCase().replace(/\s+/g, '-')}.jpg</strong>`;
+                label.style.marginBottom = '5px';
+                
+                const downloadBtn = document.createElement('button');
+                downloadBtn.textContent = 'Download';
+                downloadBtn.onclick = () => downloadImage(canvas, `slide${slide.number}-${slide.name.toLowerCase().replace(/\s+/g, '-')}.jpg`);
+                
+                imageContainer.appendChild(label);
+                imageContainer.appendChild(canvas);
+                imageContainer.appendChild(downloadBtn);
+                
+                container.appendChild(imageContainer);
+            });
+        }
+
+        function downloadImage(canvas, filename) {
+            const link = document.createElement('a');
+            link.download = filename;
+            link.href = canvas.toDataURL('image/jpeg', 0.9);
+            link.click();
+        }
+
+        function downloadAllImages() {
+            slideData.forEach(slide => {
+                const canvas = document.getElementById(`slide${slide.number}`);
+                if (canvas) {
+                    setTimeout(() => {
+                        downloadImage(canvas, `slide${slide.number}-${slide.name.toLowerCase().replace(/\s+/g, '-')}.jpg`);
+                    }, slide.number * 200);
+                }
+            });
+        }
+
+        // Auto-generate on page load
+        window.onload = generateAllImages;
+    </script>
+</body>
+</html>
