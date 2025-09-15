@@ -2,7 +2,7 @@
 class PresentationController {
     constructor() {
         this.currentSlide = 1;
-        this.totalSlides = 15;
+        this.totalSlides = 16;
         this.slides = document.querySelectorAll('.slide');
         this.dots = document.querySelectorAll('.dot');
         this.prevBtn = document.getElementById('prevBtn');
@@ -211,14 +211,15 @@ class PresentationUtils {
             'images/slide5-task-solving.jpg',
             'images/slide6-ai-trends.jpg',
             'images/slide7-ai-tools.jpg',
-            'images/slide8-chatgpt.jpg',
-            'images/slide9-dalle.jpg',
-            'images/slide10-copilot.jpg',
-            'images/slide11-bard.jpg',
-            'images/slide12-runway.jpg',
+            'images/slide8-chatgpt-student.jpg',
+            'images/slide9-cursor.jpg',
+            'images/slide10-openai-fm.jpg',
+            'images/slide11-invideo-ai.jpg',
+            'images/slide12-gemini-notes.jpg',
             'images/slide13-china-education.jpg',
-            'images/slide14-knowledge-improvement.jpg',
-            'images/slide15-future-ai.jpg'
+            'images/slide-14.jpg',
+            'images/slide15-future-ai.jpg',
+            'images/slide16-ai-student-life.jpg'
         ];
 
         imageUrls.forEach(url => {
