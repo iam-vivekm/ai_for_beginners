@@ -181,9 +181,28 @@ class PresentationController {
         if (container) {
             const containerWidth = container.offsetWidth;
             const containerHeight = container.offsetHeight;
-            const maxWidth = Math.min(containerWidth * 0.9, 400);
-            const maxHeight = Math.min(containerHeight * 0.8, 400);
-            
+
+            // Responsive max dimensions based on screen size
+            let maxWidth, maxHeight;
+
+            if (window.innerWidth >= 1920) {
+                // Ultra-wide screens
+                maxWidth = Math.min(containerWidth * 0.9, 700);
+                maxHeight = Math.min(containerHeight * 0.8, 600);
+            } else if (window.innerWidth >= 1440) {
+                // Large desktop screens
+                maxWidth = Math.min(containerWidth * 0.9, 600);
+                maxHeight = Math.min(containerHeight * 0.8, 500);
+            } else if (window.innerWidth >= 1024) {
+                // Standard desktop
+                maxWidth = Math.min(containerWidth * 0.9, 500);
+                maxHeight = Math.min(containerHeight * 0.8, 400);
+            } else {
+                // Tablet and mobile
+                maxWidth = Math.min(containerWidth * 0.9, 400);
+                maxHeight = Math.min(containerHeight * 0.8, 300);
+            }
+
             img.style.maxWidth = `${maxWidth}px`;
             img.style.maxHeight = `${maxHeight}px`;
         }
@@ -400,16 +419,19 @@ class PerformanceOptimizer {
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize main presentation controller
     const presentation = new PresentationController();
-    
+
+    // Make presentation controller globally accessible for resize handler
+    window.presentationController = presentation;
+
     // Initialize utility functions
     PresentationUtils.preloadImages();
     PresentationUtils.createPlaceholderImages();
     PresentationUtils.addLoadingStates();
     PresentationUtils.addSmoothScrolling();
-    
+
     // Initialize animation controller
     const animations = new AnimationController();
-    
+
     // Initialize performance optimizer
     const optimizer = new PerformanceOptimizer();
 
@@ -433,18 +455,15 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('Click dots to jump to specific slides');
 });
 
-// Handle window resize
+// Handle window resize - delegate to presentation controller
 window.addEventListener('resize', () => {
-    // Recalculate image sizes
-    const images = document.querySelectorAll('.slide-image');
-    images.forEach(img => {
-        const container = img.closest('.image-content');
-        if (container) {
-            const containerWidth = container.offsetWidth;
-            const maxWidth = Math.min(containerWidth * 0.9, 400);
-            img.style.maxWidth = `${maxWidth}px`;
-        }
-    });
+    // Trigger image resize through the presentation controller
+    if (window.presentationController) {
+        const images = document.querySelectorAll('.slide-image');
+        images.forEach(img => {
+            window.presentationController.adjustImageSize(img);
+        });
+    }
 });
 
 // Handle page visibility change
